@@ -89,7 +89,7 @@ class App extends Component {
         return;
       }
 
-      this.setState({ loading: true });
+      this.setState({ loading: false });
       this.state.decentragram.methods
         .uploadImage(result[0].hash, description)
         .send({ from: this.state.account })
@@ -128,7 +128,12 @@ class App extends Component {
         <Navbar account={this.state.account} />
         {this.state.loading ? (
           <div id="loader" className="text-center mt-5">
-            <p>Loading...</p>
+            <Main
+              images={this.state.images}
+              captureFile={this.captureFile}
+              uploadImage={this.uploadImage}
+              tipImageOwner={this.tipImageOwner}
+            />
           </div>
         ) : (
           <Main
